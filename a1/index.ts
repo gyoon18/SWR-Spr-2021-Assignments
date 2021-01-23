@@ -3,9 +3,6 @@ export const myMean = (array: number[]): number => {
     var average = array.reduce((a1,a2,_,b) => a1 + a2/b.length,0);
     return average;
   }
-  // testing purposes
-  const numArray: number[] = [1, 2, 3, 4, 5, 6];
-  console.log(myMean(numArray)); // expected: 3.5
 
 /* getPrimes */
 export const getPrimes = (array: number[]): number[] => {
@@ -16,21 +13,23 @@ export const getPrimes = (array: number[]): number[] => {
         return true;
         });
   };
-  // testing purposes
-  const primeArray: number[] = [2, 3, 4, 5, 6, 7, 8, 9, 10];
-  console.log(getPrimes(primeArray)); //expected: [2, 3, 5, 7]
 
 /* partition */
-/* export const partition = (
+ export const partition = (
     array: number[],
     belongToGroup1: (element: number) => boolean
   ): { group1: number[]; group2: number[] } => {
-    TODO
-  }; */
+    let group1:number[] = [];
+    let group2:number[] = [];
+    array.map(val => belongToGroup1(val) ? group1.push(val) : group2.push(val));
+    return {group1, group2};
+  };
 
 /* makeSentences */
-/* type Doggo = any;
-
-export const makeSentences = (array: Doggo[]): string[] => {
-  TODO
-}; */
+ type Doggo = {name: string, age: number, breed: string};
+  
+ export const makeSentences = (array: Doggo[]): string[] => {
+    let temp: string[] = [];
+    array.map(doggo => temp.push(doggo.name + ' is ' + doggo.age.toFixed() + " years old, and is a " + doggo.breed));
+    return temp;
+};
